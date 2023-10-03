@@ -1,0 +1,35 @@
+/*Processed by SURYA on 3/10/2023@20:45:10*/
+.container {
+  background-color: aquamarine;
+
+  .card1 {
+    h1 {
+      color: green;
+    }
+
+    p {
+      color: palegreen;
+    }
+  }
+
+  .card2 {
+    h1 {
+      color: red;
+    }
+
+    p {
+      color: orange;
+    }
+  }
+
+  button {
+    border-radius: 25px;
+    border: 2px solid darkcyan;
+
+    &:hover {
+      background-color: darkcyan;
+    }
+  }
+}
+
+//# sourceMappingURL=style.scss.map
