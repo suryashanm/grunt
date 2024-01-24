@@ -1,15 +1,27 @@
 {
-  "name": "grunttask",
+  "name": "gruntshow",
   "version": "1.0.0",
-  "description": "Grunt task management",
-  "main": "Gruntfile.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "bower": "^1.8.14",
     "grunt": "^1.6.1",
-    "grunt-contrib-concat": "^2.1.0"
+    "grunt-bower": "^0.5.0",
+    "grunt-contrib-sass": "^2.0.0",
+    "sass": "^1.68.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^5.0.0",
+    "grunt-contrib-obfuscator": "^8.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0",
+    "javascript-obfuscator": "^4.1.0"
   }
 }

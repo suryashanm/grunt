@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grunt test</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grunt</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/dist/css/main.min.css" />
+    <link rel="stylesheet" href="./assets/dist/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card1">
+        <h1>Primary heading</h1>
+        <p>Primary paragraph</p>
+      </div>
+      <div class="card2">
+        <h1>Secondary heading</h1>
+        <p>Secondary paragraph</p>
+      </div>
 
-    <link rel="shortcut icon" href="./assets/brand/favicon-32x32.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png">
-</head>
+      <h1 id="text">Initial script</h1>
 
-<body>
-    <h1>
-        Grunt is a JavaScript task runner that uses a command-line interface to
-        run custom tasks.
-    </h1>
-</body>
+      <button type="button" onclick="changeText()">Click</button>
+      <button type="button" onclick="reload()">Reload</button>
 
+      <!-- JS -->
+      <script src="./assets/dist/js/script.min.js"></script>
+      <script src="./assets/dist/js/jquery/jquery.min.js"></script>
+    </div>
+  </body>
 </html>

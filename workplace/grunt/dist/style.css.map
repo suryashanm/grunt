@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../css/style.css"],"names":[],"mappings":";AAAA,CAAC,IAAI,CAAC,CAAC,CAAC;AACR,EAAE,KAAK,CAAC,CAAC,QAAQ,CAAC,CAAC;AACnB,CAAC,CAAC","file":"style.css","sourcesContent":["#text {\r\n  color: darkblue;\r\n}\r\n"]}

@@ -13,33 +13,139 @@ module.exports = function (grunt) {
     ":" +
     currentdate.getSeconds();
 
-  // Project configuration.
   grunt.initConfig({
-    // File concatenation.
     concat: {
       options: {
         separator: "\n",
         sourceMap: true,
-        banner: "/*Processed by Grunt on " + datetime + "*/\n",
+        banner: "/*Processed by SURYA on " + datetime + "*/\n",
       },
       css: {
         src: ["../css/**/*.css"],
-        dest: "dist/css/style.css",
+        dest: "dist/style.css",
       },
       js: {
         src: ["../js/**/*.js"],
-        dest: "dist/js/script.js",
+        dest: "dist/script.js",
       },
       scss: {
         src: ["../scss/**/*.scss"],
-        dest: "dist/scss/color.scss",
+        dest: "dist/style.scss",
+      },
+    },
+
+    cssmin: {
+      options: {
+        mergeIntoShorthands: false,
+        roundingPrecision: -1,
+      },
+      css: {
+        files: {
+          "../../htdocs/assets/dist/css/style.css": ["dist/style.css"],
+        },
+      },
+      scss: {
+        files: {
+          "../../htdocs/assets/dist/css/main.min.css": [
+            "../../htdocs/assets/dist/css/main.min.css",
+          ],
+        },
+      },
+    },
+
+    sass: {
+      dist: {
+        options: {
+          style: "expanded",
+        },
+        files: {
+          "../../htdocs/assets/dist/css/main.min.css": "dist/style.scss",
+        },
+      },
+    },
+
+    uglify: {
+      minify: {
+        options: {
+          sourceMap: true,
+        },
+        files: {
+          "../../htdocs/assets/dist/js/script.min.js": ["dist/script.js"],
+        },
+      },
+    },
+
+    copy: {
+      jquery: {
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            filter: "isFile",
+            src: ["bower_components/jquery/dist/*"],
+            dest: "../../htdocs/assets/dist/js/jquery/",
+          },
+        ],
+      },
+    },
+
+    obfuscator: {
+      options: {
+        banner: "// obfuscated with grunt-contrib-obfuscator.\n",
+        debugProtection: true,
+        debugProtectionInterval: true,
+        domainLock: ["surya.selfmade.fun"],
+      },
+      task1: {
+        options: {
+          // options for each sub task
+        },
+        files: {
+          "../../htdocs/assets/dist/js/script.o.js": ["dist/script.js"],
+        },
+      },
+    },
+
+    watch: {
+      css: {
+        files: ["../css/**/*.css"],
+        tasks: ["concat:css", "cssmin:css"],
+        options: {
+          spawn: false,
+        },
+      },
+      js: {
+        files: ["../js/**/*.js"],
+        tasks: ["concat:js", "uglify", "obfuscator"],
+        options: {
+          spawn: false,
+        },
+      },
+      scss: {
+        files: ["../scss/**/*.scss"],
+        tasks: ["concat:scss", "sass", "cssmin:scss"],
+        options: {
+          spawn: false,
+        },
       },
     },
   });
 
-  // Loading Npm tasks
+  grunt.loadNpmTasks("grunt-contrib-obfuscator");
+  grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-concat");
-
-  // Running npm tasks
-  grunt.registerTask("default", ["concat"]);
+  grunt.loadNpmTasks("grunt-contrib-cssmin");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-contrib-sass");
+  grunt.registerTask("default", [
+    "copy",
+    "concat",
+    "cssmin:css",
+    "sass",
+    "cssmin:scss",
+    "uglify",
+    "obfuscator",
+    "watch",
+  ]);
 };
