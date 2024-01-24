@@ -1,29 +1,45 @@
 module.exports = function (grunt) {
-  grunt.registerTask("helloworld", function () {
-    console.log("Hello world task.");
+  var currentdate = new Date();
+  var datetime =
+    currentdate.getDate() +
+    "/" +
+    (currentdate.getMonth() + 1) +
+    "/" +
+    currentdate.getFullYear() +
+    "@" +
+    currentdate.getHours() +
+    ":" +
+    currentdate.getMinutes() +
+    ":" +
+    currentdate.getSeconds();
+
+  // Project configuration.
+  grunt.initConfig({
+    // File concatenation.
+    concat: {
+      options: {
+        separator: "\n",
+        sourceMap: true,
+        banner: "/*Processed by Grunt on " + datetime + "*/\n",
+      },
+      css: {
+        src: ["../css/**/*.css"],
+        dest: "dist/css/style.css",
+      },
+      js: {
+        src: ["../js/**/*.js"],
+        dest: "dist/js/script.js",
+      },
+      scss: {
+        src: ["../scss/**/*.scss"],
+        dest: "dist/scss/color.scss",
+      },
+    },
   });
 
-  var defaultfn = function () {
-    console.log("defaultfn is running.");
-  };
+  // Loading Npm tasks
+  grunt.loadNpmTasks("grunt-contrib-concat");
 
-  grunt.registerTask("task1", function () {
-    console.log("task1.");
-  });
-
-  grunt.registerTask("task2", function () {
-    console.log("task2.");
-  });
-
-  // callback function running as a default task.
-  // grunt.registerTask("default", defaultfn);
-
-  // Instead of running tasks on default, we run function on default.
-  // grunt.registerTask("default", function () {
-  //   console.log("Default task.");
-  // });
-
-  // Basically we can run tasks as default.
-  grunt.registerTask("callback", defaultfn);
-  grunt.registerTask("default", ["helloworld", "task1", "task2", "callback"]);
+  // Running npm tasks
+  grunt.registerTask("default", ["concat"]);
 };

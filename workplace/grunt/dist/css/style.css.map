@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../css/main.css"],"names":[],"mappings":";AAAA,CAAC,CAAC,CAAC,CAAC;AACJ,IAAI,OAAO,CAAC,CAAC,CAAC,CAAC,CAAC;AAChB,IAAI,MAAM,CAAC,CAAC,CAAC,CAAC,CAAC;AACf,IAAI,GAAG,CAAC,MAAM,CAAC,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC;AAC5B","file":"style.css","sourcesContent":["* {\r\n    padding: 0;\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n}"]}
